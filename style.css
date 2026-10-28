@@ -827,6 +827,72 @@ html, body {
     font-weight: 600;
 }
 
+.proj-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+
+.proj-github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: var(--radius-pill);
+    color: var(--text-pure);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 700;
+    transition: all var(--trans-fast);
+}
+
+.proj-github-btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+.proj-github-btn .link-arrow {
+    color: var(--gold);
+    font-size: 13px;
+}
+
+.proj-github-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 134, 40, 0.25);
+}
+
+.proj-github-btn:hover .link-arrow {
+    color: #FFFFFF;
+}
+
+.status-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+}
+
+.status-blue {
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(37, 99, 235, 0.30);
+    color: #1D4ED8;
+}
+
+.status-purple {
+    background: rgba(124, 58, 237, 0.10);
+    border: 1px solid rgba(124, 58, 237, 0.30);
+    color: #6D28D9;
+}
+
 /* Card Specific: Skills & Arsenal */
 .skills-categorized {
     display: flex;
@@ -1046,65 +1112,129 @@ html, body {
     color: var(--text-dim);
 }
 
-/* Card Specific: Connect & Contact */
+.bento-card.bento-span-2 {
+    grid-column: span 2;
+}
+
+/* Card Specific: Connect & Email Request Box */
 .contact-lead {
-    font-size: 14px;
+    font-size: 14.5px;
     color: var(--text-secondary);
 }
 
-.contact-actions-grid {
+.contact-box-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    margin-top: 4px;
 }
 
-.direct-contact-tile {
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.input-field-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field-label {
+    font-family: var(--font-heading);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.custom-input,
+.custom-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-pure);
+    transition: all var(--trans-fast);
+    box-sizing: border-box;
+}
+
+.custom-textarea {
+    resize: vertical;
+    min-height: 75px;
+    line-height: 1.5;
+}
+
+.custom-input:focus,
+.custom-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184, 134, 40, 0.15);
+    background: #FFFFFF;
+}
+
+.custom-input::placeholder,
+.custom-textarea::placeholder {
+    color: var(--text-dim);
+    opacity: 0.7;
+}
+
+.form-submit-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 11px 15px;
-    background: rgba(0, 0, 0, 0.025);
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    text-decoration: none;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.submit-email-request-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: var(--gold);
+    border: 1px solid var(--gold-dark);
+    border-radius: var(--radius-pill);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(184, 134, 40, 0.25);
     transition: all var(--trans-fast);
 }
 
-.direct-contact-tile:hover {
-    background: rgba(184, 134, 40, 0.10);
-    border-color: rgba(184, 134, 40, 0.30);
-    transform: translateX(4px);
+.submit-email-request-btn svg {
+    width: 15px;
+    height: 15px;
 }
 
-.tile-icon {
-    font-size: 20px;
-    margin-right: 12px;
+.submit-email-request-btn:hover {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(184, 134, 40, 0.35);
 }
 
-.tile-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.direct-mail-chip {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--trans-fast);
 }
 
-.tile-label {
-    font-family: var(--font-heading);
-    font-size: 11px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    font-weight: 700;
+.direct-mail-chip strong {
+    color: var(--gold-light);
 }
 
-.tile-val {
-    font-size: 14px;
-    color: var(--text-pure);
-    font-weight: 600;
-}
-
-.tile-arrow {
-    font-size: 15px;
-    color: var(--gold);
+.direct-mail-chip:hover strong {
+    color: var(--gold-dark);
+    text-decoration: underline;
 }
 
 /* ══════════════════════════════════════════════════
@@ -1228,6 +1358,14 @@ html, body {
     }
 
     .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-card.bento-span-2 {
+        grid-column: span 1;
+    }
+
+    .form-grid-2 {
         grid-template-columns: 1fr;
     }
 }
