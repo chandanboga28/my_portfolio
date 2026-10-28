@@ -3,418 +3,532 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandan Boga | Portfolio</title>
-    <meta name="description" content="Portfolio of Chandan Boga – Developer, Creator & Problem Solver. 1st Year B.Tech CSE at Newton School of Technology, Pune.">
+    <title>Chandan Boga | Developer &amp; Problem Solver</title>
+    <meta name="description" content="Portfolio of Chandan Boga – 1st Year B.Tech CSE student at Newton School of Technology, Pune. Competitive Programmer, Game Developer, Hacktoberfest Winner.">
+    <meta name="theme-color" content="#F8F6F0">
+
+    <!-- Google Fonts: Space Grotesk (Headings) & Plus Jakarta Sans (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════
-     SCREEN 1 — CINEMATIC LANDING PAGE
-══════════════════════════════════════════════ -->
-<section id="screen-landing">
-    <canvas id="particle-canvas"></canvas>
+    <!-- Ambient background canvas & lighting -->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="ambient-glow glow-gold"></div>
+    <div class="ambient-glow glow-purple"></div>
+    <div class="ambient-glow glow-crimson"></div>
 
-    <!-- Ambient glow orbs -->
-    <div class="orb orb-gold"></div>
-    <div class="orb orb-burgundy"></div>
-    <div class="orb orb-purple"></div>
+    <!-- MAIN SINGLE-SCREEN WRAPPER -->
+    <main class="single-screen-app" id="app">
 
-    <!-- Top nav -->
-    <nav class="l-nav">
-        <div class="l-nav-logo">✦ CB</div>
-        <div class="l-nav-links">
-            <a href="https://github.com/chandanboga28" target="_blank" id="nav-github">GitHub</a>
-            <a href="https://www.linkedin.com/in/chandan-boga-0a35b0414/" target="_blank" id="nav-linkedin">LinkedIn</a>
-            <a href="https://www.instagram.com/chandan.xist/" target="_blank" id="nav-instagram">Instagram</a>
-        </div>
-    </nav>
+        <!-- ══════════════════════════════════════════════════
+             LEFT SIDE: PHOTO SHOWCASE & QUICK CONNECT
+        ══════════════════════════════════════════════════ -->
+        <aside class="left-hero-column">
+            <div class="photo-card-container">
+                
+                <!-- Royal decorative corners -->
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
 
-    <!-- Main stage -->
-    <div class="l-stage">
-
-        <!-- LEFT: Text & CTA -->
-        <div class="l-left">
-            <div class="l-eyebrow">
-                <span class="eyebrow-dot"></span>
-                NST Pune &nbsp;·&nbsp; B.Tech CSE &nbsp;·&nbsp; First Year
-            </div>
-
-            <h1 class="l-name">
-                <span class="ln-first">CHANDAN</span>
-                <span class="ln-last">BOGA</span>
-            </h1>
-
-            <p class="l-tagline">Developer &nbsp;·&nbsp; Creator &nbsp;·&nbsp; Problem Solver</p>
-
-            <div class="l-stats">
-                <div class="ls-item">
-                    <span class="ls-num">350+</span>
-                    <span class="ls-lbl">CF Problems</span>
+                <!-- Status Badge -->
+                <div class="availability-pill">
+                    <span class="pulse-indicator"></span>
+                    <span class="pill-text">Open to Opportunities</span>
                 </div>
-                <div class="ls-div"></div>
-                <div class="ls-item">
-                    <span class="ls-num">900</span>
-                    <span class="ls-lbl">CF Rating</span>
+
+                <!-- Photo Frame & Fallback Placeholder -->
+                <div class="photo-frame" id="photoFrame">
+                    <!-- Photo element -->
+                    <img 
+                        src="photo.jpg" 
+                        alt="Chandan Boga" 
+                        id="userPhoto" 
+                        class="hero-photo"
+                        onerror="handlePhotoError(this)"
+                    >
+
+                    <!-- Elegant Fallback Placeholder when image is missing -->
+                    <div class="photo-placeholder" id="photoPlaceholder">
+                        <div class="placeholder-graphic">
+                            <div class="silhouette-ring">
+                                <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="camera-add-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                    <circle cx="12" cy="13" r="4"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="placeholder-title">Chandan Boga</h3>
+                        <p class="placeholder-subtitle">Photo Placeholder</p>
+                        <span class="placeholder-tip">Add <code>photo.jpg</code> to project folder</span>
+                    </div>
+
+                    <!-- Inner gradient overlay -->
+                    <div class="frame-vignette"></div>
+
+                    <!-- Quick identity overlay at bottom of photo -->
+                    <div class="photo-caption">
+                        <span class="caption-name">CHANDAN BOGA</span>
+                        <span class="caption-tag">NST Pune &nbsp;·&nbsp; B.Tech CSE</span>
+                    </div>
                 </div>
-                <div class="ls-div"></div>
-                <div class="ls-item">
-                    <span class="ls-num">🥇</span>
-                    <span class="ls-lbl">Hackathon</span>
+
+                <!-- Quick Action & Social Strip -->
+                <div class="left-actions-strip">
+                    <a href="mailto:chandanboga28@gmail.com" class="action-btn email-btn" title="Send Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>chandanboga28@gmail.com</span>
+                    </a>
+
+                    <div class="social-icons-group">
+                        <a href="https://github.com/chandanboga28" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/chandan-boga-0a35b0414/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/chandan.xist/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="tel:+919951719456" class="icon-link" aria-label="Phone" id="phoneCopyBtn" title="Copy Phone Number">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+
             </div>
+        </aside>
 
-            <p class="l-desc">
-                Hacktoberfest Winner · <em>Best Use of Gemma</em><br>
-                Building <strong>AMENDMENT</strong> — a game powered by passion & code.
-            </p>
+        <!-- ══════════════════════════════════════════════════
+             RIGHT SIDE: COMPREHENSIVE DETAILS & BENTO SYSTEM
+        ══════════════════════════════════════════════════ -->
+        <section class="right-details-column">
+            <div class="details-scrollable-inner">
 
-            <button class="l-cta" id="enterBtn">
-                <span class="cta-text">Enter Portfolio</span>
-                <span class="cta-arrow">⟶</span>
-                <div class="cta-shimmer"></div>
-            </button>
+                <!-- TOP HEADER -->
+                <header class="profile-header">
+                    <div class="eyebrow-line">
+                        <span class="gold-symbol">✦</span>
+                        <span>FIRST YEAR B.TECH CSE &nbsp;·&nbsp; NEWTON SCHOOL OF TECHNOLOGY, PUNE</span>
+                    </div>
 
-            <div class="l-scroll-hint">
-                <div class="sh-line"></div>
-                <span>or click the image</span>
-                <div class="sh-line"></div>
+                    <div class="title-row">
+                        <h1 class="main-name">
+                            <span class="gold-shimmer-text">CHANDAN</span> BOGA
+                        </h1>
+                        <button class="quick-copy-badge" id="copyEmailBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span>Copy Email</span>
+                        </button>
+                    </div>
+
+                    <p class="role-tagline">
+                        Developer &nbsp;·&nbsp; Creator &nbsp;·&nbsp; Competitive Programmer &nbsp;·&nbsp; Problem Solver
+                    </p>
+                </header>
+
+                <!-- STATS & METRICS HIGHLIGHTS -->
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-info">
+                            <div class="metric-val">350+</div>
+                            <div class="metric-lbl">CF Problems Solved</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-info">
+                            <div class="metric-val">900</div>
+                            <div class="metric-lbl">Codeforces Rating</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🥇</div>
+                        <div class="metric-info">
+                            <div class="metric-val">Winner</div>
+                            <div class="metric-lbl">Hacktoberfest Track</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🎓</div>
+                        <div class="metric-info">
+                            <div class="metric-val">991<span class="metric-sub">/1000</span></div>
+                            <div class="metric-lbl">12th Board Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION FILTER TABS -->
+                <nav class="filter-tabs" aria-label="Section Filter">
+                    <button class="tab-btn active" data-tab="all">✦ All Details</button>
+                    <button class="tab-btn" data-tab="about">About</button>
+                    <button class="tab-btn" data-tab="skills">Skills</button>
+                    <button class="tab-btn" data-tab="projects">Projects</button>
+                    <button class="tab-btn" data-tab="education">Education</button>
+                    <button class="tab-btn" data-tab="honors">Honors</button>
+                </nav>
+
+                <!-- BENTO GRID CARDS -->
+                <div class="bento-grid" id="bentoGrid">
+
+                    <!-- CARD: ABOUT ME -->
+                    <div class="bento-card bento-about" data-category="about">
+                        <div class="card-head">
+                            <span class="card-badge">Biography</span>
+                            <span class="card-chip">About Me</span>
+                        </div>
+                        <p class="bio-text">
+                            Hey! I'm <strong>Chandan Boga</strong>, a passionate first-year <strong>B.Tech Computer Science &amp; Engineering</strong> student at <strong>Newton School of Technology, Pune</strong>. 
+                            I thrive at the intersection of rigorous algorithmic thinking and creative digital experiences — building everything from competitive programming solutions to engaging indie games.
+                        </p>
+                        <div class="interests-pills">
+                            <span class="pill">⚡ Competitive Programming</span>
+                            <span class="pill">🎮 Game Dev</span>
+                            <span class="pill">🤖 AI / ML</span>
+                            <span class="pill">💡 Creative Problem Solving</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD: FEATURED PROJECT (AMENDMENT) -->
+                    <div class="bento-card bento-project" data-category="projects">
+                        <div class="card-head">
+                            <span class="card-badge gold-badge">Featured Project</span>
+                            <span class="status-live">In Active Development</span>
+                        </div>
+                        <div class="project-hero">
+                            <div class="project-icon-box">🎮</div>
+                            <div>
+                                <h3 class="proj-title">AMENDMENT</h3>
+                                <p class="proj-subtitle">Original Narrative Indie Game</p>
+                            </div>
+                        </div>
+                        <p class="proj-description">
+                            An ambitious original game blending deep, atmospheric storytelling with challenging gameplay mechanics. Engineered from scratch using Python, modular game architecture, and custom physics logic.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Game Logic</span>
+                            <span class="tech-tag">Creative Writing</span>
+                            <span class="tech-tag">Level Design</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD: TECHNICAL SKILLS & STACK -->
+                    <div class="bento-card bento-skills" data-category="skills">
+                        <div class="card-head">
+                            <span class="card-badge">Capabilities</span>
+                            <span class="card-chip">Tech Stack</span>
+                        </div>
+                        <div class="skills-categorized">
+                            <div class="skill-group">
+                                <span class="group-title">Languages &amp; Core</span>
+                                <div class="skills-chips">
+                                    <span class="s-chip highlight">Python</span>
+                                    <span class="s-chip highlight">C++</span>
+                                    <span class="s-chip">Data Structures</span>
+                                    <span class="s-chip">Algorithms</span>
+                                    <span class="s-chip">SQL</span>
+                                </div>
+                            </div>
+                            <div class="skill-group">
+                                <span class="group-title">Domains &amp; Tools</span>
+                                <div class="skills-chips">
+                                    <span class="s-chip">Competitive Programming</span>
+                                    <span class="s-chip">Game Development</span>
+                                    <span class="s-chip">AI / ML Basics</span>
+                                    <span class="s-chip">Git &amp; GitHub</span>
+                                    <span class="s-chip">VS Code</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Codeforces rating visual indicator -->
+                        <div class="cf-visual-box">
+                            <div class="cf-vis-top">
+                                <span>Codeforces Mastery</span>
+                                <span class="cf-score">Rating: 900 · 350+ Solved</span>
+                            </div>
+                            <div class="cf-meter-track">
+                                <div class="cf-meter-bar" style="width: 72%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD: HONORS & ACHIEVEMENTS -->
+                    <div class="bento-card bento-achieve" data-category="honors">
+                        <div class="card-head">
+                            <span class="card-badge">Recognition</span>
+                            <span class="card-chip">Accomplishments</span>
+                        </div>
+                        <div class="achieve-grid">
+                            <div class="achieve-row highlight-row">
+                                <div class="achieve-trophy">🏆</div>
+                                <div class="achieve-content">
+                                    <div class="achieve-title">Hacktoberfest Winner · 1st Place</div>
+                                    <div class="achieve-desc">Special Track: <em>"Best Use of Gemma"</em>. Built an innovative open-source solution integrating Google's Gemma model.</div>
+                                </div>
+                            </div>
+                            <div class="achieve-row">
+                                <div class="achieve-trophy">⚡</div>
+                                <div class="achieve-content">
+                                    <div class="achieve-title">Codeforces Competitor</div>
+                                    <div class="achieve-desc">Solved 350+ algorithmic challenges with a peak rating of 900.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD: EDUCATION TIMELINE -->
+                    <div class="bento-card bento-education" data-category="education">
+                        <div class="card-head">
+                            <span class="card-badge">Academics</span>
+                            <span class="card-chip">Education Journey</span>
+                        </div>
+                        <div class="timeline-tree">
+                            
+                            <div class="tree-item active-node">
+                                <div class="tree-marker"></div>
+                                <div class="tree-content">
+                                    <div class="tree-meta">
+                                        <span class="tree-institution">Newton School of Technology</span>
+                                        <span class="tree-badge current-badge">2026 – Present</span>
+                                    </div>
+                                    <div class="tree-degree">B.Tech in Computer Science &amp; Engineering</div>
+                                    <div class="tree-loc">📍 Pune, Maharashtra</div>
+                                </div>
+                            </div>
+
+                            <div class="tree-item">
+                                <div class="tree-marker"></div>
+                                <div class="tree-content">
+                                    <div class="tree-meta">
+                                        <span class="tree-institution">Ignite Junior College</span>
+                                        <span class="tree-badge score-badge">991 / 1000</span>
+                                    </div>
+                                    <div class="tree-degree">Senior Secondary (12th Board) · 2026</div>
+                                    <div class="tree-loc">📍 Telangana</div>
+                                </div>
+                            </div>
+
+                            <div class="tree-item">
+                                <div class="tree-marker"></div>
+                                <div class="tree-content">
+                                    <div class="tree-meta">
+                                        <span class="tree-institution">Ushodaya High School</span>
+                                        <span class="tree-badge score-badge">CGPA 9.8 / 10</span>
+                                    </div>
+                                    <div class="tree-degree">Secondary Education (10th Board) · 2024</div>
+                                    <div class="tree-loc">📍 Outstanding Academic Record</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- CARD: CONNECT & CONTACT -->
+                    <div class="bento-card bento-contact" data-category="about">
+                        <div class="card-head">
+                            <span class="card-badge">Communication</span>
+                            <span class="card-chip">Get In Touch</span>
+                        </div>
+                        <p class="contact-lead">
+                            Looking to collaborate on exciting codebases, game development, or hackathons? My inbox is always open!
+                        </p>
+                        <div class="contact-actions-grid">
+                            <a href="mailto:chandanboga28@gmail.com" class="direct-contact-tile" id="contactEmailTile">
+                                <div class="tile-icon">✉️</div>
+                                <div class="tile-details">
+                                    <span class="tile-label">Direct Email</span>
+                                    <span class="tile-val">chandanboga28@gmail.com</span>
+                                </div>
+                                <span class="tile-arrow">↗</span>
+                            </a>
+                            <a href="tel:+919951719456" class="direct-contact-tile" id="contactPhoneTile">
+                                <div class="tile-icon">📞</div>
+                                <div class="tile-details">
+                                    <span class="tile-label">Phone &amp; WhatsApp</span>
+                                    <span class="tile-val">+91 99517 19456</span>
+                                </div>
+                                <span class="tile-arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SLEEK FOOTER -->
+                <footer class="single-screen-footer">
+                    <span>✦ Chandan Boga &nbsp;·&nbsp; Portfolio</span>
+                    <span class="footer-center">Pune, India &nbsp;·&nbsp; All rights reserved</span>
+                    <span class="footer-status"><span class="tiny-dot"></span> Ready to build</span>
+                </footer>
+
             </div>
-        </div>
+        </section>
 
-        <!-- RIGHT: Hero photo -->
-        <div class="l-right" id="heroPhotoWrap">
-            <div class="hero-glow-bg"></div>
-            <img src="edited.png" alt="Chandan Boga holding his portfolio" class="l-hero-img" id="heroImg">
-            <div class="hero-left-fade"></div>
-            <div class="hero-bottom-fade"></div>
-        </div>
+    </main>
 
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="toast">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMsg">Copied to clipboard!</span>
     </div>
 
-    <!-- Gold bottom bar -->
-    <div class="l-bottom-bar">
-        <div class="bb-line"></div>
-        <span class="bb-text">✦ &nbsp; Click anywhere on the photo to explore &nbsp; ✦</span>
-        <div class="bb-line"></div>
-    </div>
-</section>
+    <!-- MAIN SCRIPT -->
+    <script>
+        /* ── Image Fallback Handler ── */
+        function handlePhotoError(img) {
+            img.style.display = 'none';
+            const placeholder = document.getElementById('photoPlaceholder');
+            if (placeholder) {
+                placeholder.classList.add('visible');
+            }
+        }
 
+        /* ── Ambient Floating Particles ── */
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+        let W = canvas.width = window.innerWidth;
+        let H = canvas.height = window.innerHeight;
 
-<!-- ══════════════════════════════════════════════
-     SCREEN 2 — FULL PORTFOLIO
-══════════════════════════════════════════════ -->
-<section id="screen-portfolio" class="p-hidden">
+        window.addEventListener('resize', () => {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        });
 
-    <!-- Back button -->
-    <button class="back-btn" id="backBtn">← Home</button>
+        const PARTICLE_COLORS = ['#B88628', '#D4AF37', '#9E731F', '#CCA042'];
+        const particles = Array.from({ length: 55 }, () => createParticle(true));
 
-    <!-- Body top decoration -->
-    <div class="p-top-bar">👑 &nbsp; CHANDAN BOGA &nbsp;·&nbsp; ROYAL PORTFOLIO &nbsp; 👑</div>
+        function createParticle(isInitial) {
+            return {
+                x: Math.random() * W,
+                y: isInitial ? Math.random() * H : H + 10,
+                radius: Math.random() * 1.5 + 0.4,
+                vy: Math.random() * 0.45 + 0.15,
+                vx: (Math.random() - 0.5) * 0.2,
+                opacity: Math.random() * 0.6 + 0.15,
+                color: PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
+                life: 0,
+                maxLife: Math.random() * 260 + 100
+            };
+        }
 
-    <!-- Background blobs -->
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="blob blob-4"></div>
-        <div class="blob blob-5"></div>
-    </div>
+        function renderParticles() {
+            ctx.clearRect(0, 0, W, H);
+            particles.forEach((p, idx) => {
+                p.y -= p.vy;
+                p.x += p.vx;
+                p.life++;
+                const fade = Math.sin((p.life / p.maxLife) * Math.PI);
+                ctx.globalAlpha = Math.max(0, p.opacity * fade);
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
 
-    <!-- Three column layout -->
-    <div class="portfolio-wrapper">
+                if (p.life >= p.maxLife || p.y < -15) {
+                    particles[idx] = createParticle(false);
+                }
+            });
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(renderParticles);
+        }
+        renderParticles();
 
-        <!-- ═══ LEFT COLUMN ═══ -->
-        <div class="col left-col">
+        /* ── Bento Grid Tabs Filter ── */
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const bentoCards = document.querySelectorAll('.bento-card');
 
-            <div class="card card-about">
-                <div class="card-header">
-                    <div class="card-emoji">👨‍💻</div>
-                    <h2 class="card-title">About Me</h2>
-                </div>
-                <p class="about-text">Hey! I'm <strong>Chandan Boga</strong>, a passionate first-year B.Tech CSE student at Newton School of Technology, Pune. I love building things — from competitive programming to game development. Always hungry to learn, compete, and create!</p>
-                <div class="about-tags">
-                    <span class="a-tag">🎯 Problem Solver</span>
-                    <span class="a-tag">🎮 Game Developer</span>
-                    <span class="a-tag">🚀 Innovator</span>
-                </div>
-            </div>
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-            <div class="card card-skills">
-                <div class="card-header">
-                    <div class="card-emoji">🛠️</div>
-                    <h2 class="card-title">Skills</h2>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill s-python"><span class="skill-icon">🐍</span><span>Python</span></div>
-                    <div class="skill s-cp"><span class="skill-icon">⚡</span><span>Competitive Programming</span></div>
-                    <div class="skill s-game"><span class="skill-icon">🎮</span><span>Game Development</span></div>
-                    <div class="skill s-ai"><span class="skill-icon">🤖</span><span>AI / ML</span></div>
-                </div>
-                <div class="cf-bar-section">
-                    <div class="cf-bar-label">
-                        <span>Codeforces Rating</span>
-                        <span class="cf-rating">900</span>
-                    </div>
-                    <div class="cf-bar-track"><div class="cf-bar-fill"></div></div>
-                    <div class="cf-problems">350+ problems solved</div>
-                </div>
-            </div>
+                const targetTab = btn.getAttribute('data-tab');
 
-            <div class="card card-edu">
-                <div class="card-header">
-                    <div class="card-emoji">🎓</div>
-                    <h2 class="card-title">Education</h2>
-                </div>
-                <div class="timeline">
-                    <div class="tl-item">
-                        <div class="tl-dot dot-gold"></div>
-                        <div class="tl-body">
-                            <div class="tl-school">Newton School of Technology</div>
-                            <div class="tl-loc">📍 Pune</div>
-                            <div class="tl-detail"><span class="badge badge-green">Current</span> B.Tech · 1st Year · 2026–Present</div>
-                        </div>
-                    </div>
-                    <div class="tl-item">
-                        <div class="tl-dot dot-gold"></div>
-                        <div class="tl-body">
-                            <div class="tl-school">Ignite Junior College</div>
-                            <div class="tl-loc">📍 12th Board · 2026</div>
-                            <div class="tl-detail"><span class="badge badge-orange">991 / 1000</span> Outstanding Score</div>
-                        </div>
-                    </div>
-                    <div class="tl-item">
-                        <div class="tl-dot dot-gold"></div>
-                        <div class="tl-body">
-                            <div class="tl-school">Ushodaya High School</div>
-                            <div class="tl-loc">📍 10th Board · 2024</div>
-                            <div class="tl-detail"><span class="badge badge-purple">CGPA 9.8 / 10</span> Excellent Record</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                bentoCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (targetTab === 'all' || category === targetTab) {
+                        card.style.display = '';
+                        card.style.animation = 'cardFadeIn 0.4s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
 
-        </div>
+        /* ── Toast Notification Helper ── */
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+        let toastTimeout;
 
-        <!-- ═══ CENTER COLUMN ═══ -->
-        <div class="col center-col">
-            <div class="profile-card">
+        function showToast(message) {
+            toastMsg.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2600);
+        }
 
-                <div class="ring-wrap">
-                    <div class="ring-outer">
-                        <div class="ring-inner">
-                            <img src="edited.png" alt="Chandan Boga" class="profile-photo" id="profile-photo">
-                        </div>
-                    </div>
-                    <div class="ring-glow"></div>
-                </div>
+        /* ── Copy Email & Phone Actions ── */
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText('chandanboga28@gmail.com').then(() => {
+                    showToast('Email copied: chandanboga28@gmail.com');
+                }).catch(() => {
+                    showToast('chandanboga28@gmail.com');
+                });
+            });
+        }
 
-                <h1 class="profile-name">Chandan Boga</h1>
-                <p class="profile-role">1st Year Student &nbsp;·&nbsp; Developer</p>
-                <p class="profile-college">🏛️ Newton School of Technology, Pune</p>
-
-                <div class="open-badge">
-                    <span class="open-dot"></span>
-                    Open to Opportunities
-                </div>
-
-                <div class="stats-row">
-                    <div class="stat-box">
-                        <div class="stat-num">350+</div>
-                        <div class="stat-lbl">CF Problems</div>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat-box">
-                        <div class="stat-num">900</div>
-                        <div class="stat-lbl">CF Rating</div>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat-box">
-                        <div class="stat-num">🥇</div>
-                        <div class="stat-lbl">Hackathon</div>
-                    </div>
-                </div>
-
-                <div class="hack-banner">
-                    <span class="hack-icon">🏆</span>
-                    <div class="hack-text">
-                        <div class="hack-title">Hacktoberfest Winner</div>
-                        <div class="hack-sub">1st Place · Best Use of Gemma</div>
-                    </div>
-                    <span class="hack-badge">WINNER</span>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ═══ RIGHT COLUMN ═══ -->
-        <div class="col right-col">
-
-            <div class="card card-achieve">
-                <div class="card-header">
-                    <div class="card-emoji">🏆</div>
-                    <h2 class="card-title">Achievements</h2>
-                </div>
-                <div class="achieve-list">
-                    <div class="achieve-item ai-gold">
-                        <div class="ai-icon">🥇</div>
-                        <div class="ai-body">
-                            <div class="ai-name">Hacktoberfest – 1st Place</div>
-                            <div class="ai-desc">Track: "Best Use of Gemma"</div>
-                        </div>
-                    </div>
-                    <div class="achieve-item ai-blue">
-                        <div class="ai-icon">⚡</div>
-                        <div class="ai-body">
-                            <div class="ai-name">Codeforces Competitive Programmer</div>
-                            <div class="ai-desc">350+ Problems Solved · Rating: 900</div>
-                        </div>
-                    </div>
-                    <div class="achieve-item ai-pink">
-                        <div class="ai-icon">🎓</div>
-                        <div class="ai-body">
-                            <div class="ai-name">12th Board – 991/1000</div>
-                            <div class="ai-desc">Ignite Junior College · 2026</div>
-                        </div>
-                    </div>
-                    <div class="achieve-item ai-green">
-                        <div class="ai-icon">📚</div>
-                        <div class="ai-body">
-                            <div class="ai-name">10th Board – CGPA 9.8/10</div>
-                            <div class="ai-desc">Ushodaya High School · 2024</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-projects">
-                <div class="card-header">
-                    <div class="card-emoji">🚀</div>
-                    <h2 class="card-title">Projects</h2>
-                </div>
-                <div class="project-card" id="project-amendment">
-                    <div class="proj-top">
-                        <div class="proj-name">AMENDMENT</div>
-                        <span class="badge badge-pink">In Progress</span>
-                    </div>
-                    <p class="proj-desc">An original game currently in development — blending creative storytelling with immersive gameplay. Built with passion and code.</p>
-                    <div class="proj-tags">
-                        <span>🎮 Game Dev</span>
-                        <span>🐍 Python</span>
-                        <span>🧠 Logic</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-contact">
-                <div class="card-header">
-                    <div class="card-emoji">📬</div>
-                    <h2 class="card-title">Contact &amp; Socials</h2>
-                </div>
-                <div class="contact-links">
-                    <a href="mailto:chandanboga28@gmail.com" class="c-link c-email" id="link-email">
-                        <span class="c-ico">✉️</span><span class="c-text">chandanboga28@gmail.com</span><span class="c-arrow">→</span>
-                    </a>
-                    <a href="tel:+919951719456" class="c-link c-phone" id="link-phone">
-                        <span class="c-ico">📞</span><span class="c-text">+91 9951719456</span><span class="c-arrow">→</span>
-                    </a>
-                    <a href="https://github.com/chandanboga28" target="_blank" class="c-link c-github" id="link-github">
-                        <span class="c-ico">🐙</span><span class="c-text">github.com/chandanboga28</span><span class="c-arrow">→</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/chandan-boga-0a35b0414/" target="_blank" class="c-link c-linkedin" id="link-linkedin">
-                        <span class="c-ico">💼</span><span class="c-text">LinkedIn Profile</span><span class="c-arrow">→</span>
-                    </a>
-                    <a href="https://www.instagram.com/chandan.xist/?hl=en" target="_blank" class="c-link c-instagram" id="link-instagram">
-                        <span class="c-ico">📸</span><span class="c-text">@chandan.xist</span><span class="c-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<script>
-/* ── Floating gold particles ── */
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-let W = canvas.width  = window.innerWidth;
-let H = canvas.height = window.innerHeight;
-window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
-
-const COLORS = ['#C9A84C','#F0C96A','#E8B84B','#FDE68A'];
-let pts = Array.from({length:70}, () => mkPt(true));
-
-function mkPt(init) {
-    return {
-        x: Math.random() * W,
-        y: init ? Math.random() * H : H + 5,
-        r: Math.random() * 1.8 + 0.4,
-        vy: Math.random() * 0.6 + 0.25,
-        vx: (Math.random() - 0.5) * 0.25,
-        op: Math.random() * 0.55 + 0.15,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        life: 0,
-        max: Math.random() * 220 + 80,
-    };
-}
-
-function drawParticles() {
-    ctx.clearRect(0, 0, W, H);
-    pts.forEach((p, i) => {
-        p.y -= p.vy; p.x += p.vx; p.life++;
-        const fade = 1 - p.life / p.max;
-        ctx.globalAlpha = p.op * fade;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-        if (p.life >= p.max || p.y < -10) pts[i] = mkPt(false);
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(drawParticles);
-}
-drawParticles();
-
-/* ── Screen transitions ── */
-const landing   = document.getElementById('screen-landing');
-const portfolio = document.getElementById('screen-portfolio');
-
-function goPortfolio() {
-    landing.classList.add('screen-out');
-    setTimeout(() => {
-        landing.style.display = 'none';
-        portfolio.classList.remove('p-hidden');
-        portfolio.classList.add('screen-in');
-        setTimeout(() => portfolio.classList.remove('screen-in'), 700);
-    }, 550);
-}
-function goHome() {
-    portfolio.classList.add('p-hidden');
-    landing.style.display = '';
-    landing.classList.remove('screen-out');
-    landing.classList.add('screen-back');
-    setTimeout(() => landing.classList.remove('screen-back'), 600);
-}
-
-document.getElementById('enterBtn').addEventListener('click', goPortfolio);
-document.getElementById('heroImg').addEventListener('click', goPortfolio);
-document.getElementById('heroPhotoWrap').style.cursor = 'pointer';
-document.getElementById('backBtn').addEventListener('click', goHome);
-
-/* ── Subtle parallax on hero image ── */
-document.addEventListener('mousemove', e => {
-    const img = document.getElementById('heroImg');
-    if (!img) return;
-    const mx = (e.clientX / W - 0.5) * 12;
-    const my = (e.clientY / H - 0.5) * 8;
-    img.style.transform = `translate(${mx}px, ${my}px) scale(1.02)`;
-});
-</script>
-
+        const phoneBtn = document.getElementById('phoneCopyBtn');
+        if (phoneBtn) {
+            phoneBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText('+919951719456').then(() => {
+                    showToast('Phone copied: +91 9951719456');
+                }).catch(() => {
+                    showToast('+91 9951719456');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
